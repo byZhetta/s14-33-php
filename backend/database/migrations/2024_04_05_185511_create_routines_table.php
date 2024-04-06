@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('routines', function (Blueprint $table) {
             $table->id();
             $table->boolean('progress')->default(false);
-            $table->foreignIdFor(\App\Models\User::class)->nullable();
+            $table->foreignIdFor(\App\Models\User::class);
             $table->softDeletes();
             $table->timestamps();
         });

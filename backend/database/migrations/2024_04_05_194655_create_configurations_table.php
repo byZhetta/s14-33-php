@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('configurations', function (Blueprint $table) {
             $table->id();
             $table->boolean('notification')->default(false);
-            $table->foreignIdFor(\App\Models\Exercise::class)->nullable();
+            $table->foreignIdFor(\App\Models\Exercise::class);
             $table->softDeletes();
             $table->timestamps();
         });

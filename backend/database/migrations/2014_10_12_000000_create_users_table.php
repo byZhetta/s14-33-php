@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->foreignIdFor(\App\Models\Objective::class)->nullable();
+            $table->foreignIdFor(\App\Models\Objective::class);
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
