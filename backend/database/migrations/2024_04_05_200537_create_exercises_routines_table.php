@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('exercises_routines', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Exercise::class)->nullable();
-            $table->foreignIdFor(\App\Models\Routine::class)->nullable();
+            $table->foreignIdFor(\App\Models\Exercise::class);
+            $table->foreignIdFor(\App\Models\Routine::class);
             $table->enum('day', ['0','1','2','3','4','5','6']);
             $table->integer('series');
             $table->integer('repetition');
