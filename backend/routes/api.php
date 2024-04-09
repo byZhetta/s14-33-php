@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 
 
-<<<<<<< Updated upstream
+
+
 Route::post('register', [AuthController::class, 'register'])->name('api.register');
 
 Route::post('login', [AuthController::class, 'login'])->name('api.login');
@@ -18,7 +19,3 @@ Route::get('/exercises/{id}', 'App\Http\Controllers\ExerciseControllers@show');
 Route::put('/exercises/{exercise}', 'App\Http\Controllers\ExerciseControllers@update');
 Route::delete('/exercises/{exercise}', 'App\Http\Controllers\ExerciseControllers@destroy');
 });
-=======
-
-
->>>>>>> Stashed changes
