@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Exercise;
-use App\Http\Requests\ExercisePostRequest;
+use App\Http\Requests\Api\ExerciseRequest;
 use App\Traits\ApiResponse;
 use Exception;
 
@@ -21,7 +21,7 @@ class ExerciseControllers extends Controller
         }
     }
 
-    public function store(ExercisePostRequest $request)
+    public function store(ExerciseRequest $request)
     {
         try {
             $exercise = Exercise::create($request->all());
@@ -41,7 +41,7 @@ class ExerciseControllers extends Controller
         }
     }
 
-    public function update(ExercisePostRequest $request, $exercise)
+    public function update(ExerciseRequest $request, $exercise)
     {
         try {
             $exercise = Exercise::find($exercise);
