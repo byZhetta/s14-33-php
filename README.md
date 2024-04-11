@@ -1,5 +1,5 @@
 <div align=center >
-    <img src="./database/logo_entrenaconmigo.png" class="img-logo" alt="Entrena Conmigo" >
+    <img src="./database/logo_EntrenaConmigo.png" class="img-logo" alt="Entrena Conmigo" >
 </div>
 
 <h1 align="center">Entrena Conmigo</h1>
