@@ -10,7 +10,32 @@ use Exception;
 
 class ExerciseControllers extends Controller
 {
+
     use ApiResponse;
+
+    /**
+     * @OA\Get(
+     *    path="/api/exercises",
+     *    tags={"Exercises"},
+     *    summary="Get all exercises",
+     *    description="Retrieves a list of all available exercises",
+     *    security={{ "bearerAuth": {} }},
+     *    @OA\Response(
+     *        response=200,
+     *        description="Successful operation",
+     *        @OA\JsonContent(
+     *            required={"nombres", "apellidos"}, 
+     *            @OA\Property(property="nombres", type="string", example="Aderson Felix"),
+     *            @OA\Property(property="apellidos", type="string", example="Jara Lazaro"),
+     *        )
+     *    ),
+     *    @OA\Response(
+     *       response=404,
+     *       description="Error retrieving exercises"
+     *    )
+     * )
+     */
+
     public function index()
     {
         try {

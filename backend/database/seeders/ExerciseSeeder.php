@@ -13,7 +13,7 @@ class ExerciseSeeder extends Seeder
      */
     public function run(): void
     {
-        $csv = fopen(database_path('seeders/CSVs/exercises.csv'), 'r');
+        $csv = fopen(database_path('seeders/CSVs/Exercises.csv'), 'r');
         $length = 0;
         $delimiter = ';';
 
