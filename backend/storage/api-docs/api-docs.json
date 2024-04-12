@@ -8,6 +8,9 @@
     "servers": [
         {
             "url": "http://127.0.0.1:8000"
+        },
+        {
+            "url": "https:entrenaconmigo-api.vercel.app"
         }
     ],
     "paths": {
@@ -72,6 +75,14 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "status code": {
+                                            "type": "integer",
+                                            "example": 201
+                                        },
+                                        "error": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "¡Usuario creado exitosamente!"
@@ -162,6 +173,14 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "status code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "error": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "¡Inició sesión exitosamente!"
@@ -173,6 +192,45 @@
                                                     "example": "your_api_token"
                                                 },
                                                 "user": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer",
+                                                            "example": 1
+                                                        },
+                                                        "name": {
+                                                            "type": "string",
+                                                            "example": "John Doe"
+                                                        },
+                                                        "email": {
+                                                            "type": "string",
+                                                            "format": "email",
+                                                            "example": "user@example.com"
+                                                        },
+                                                        "username": {
+                                                            "type": "string",
+                                                            "example": "johndoe"
+                                                        },
+                                                        "email_verified_at": {
+                                                            "type": "string",
+                                                            "example": null
+                                                        },
+                                                        "objective_id": {
+                                                            "type": "integer",
+                                                            "example": 1
+                                                        },
+                                                        "deleted_at": {
+                                                            "type": "string",
+                                                            "example": null
+                                                        },
+                                                        "created_at": {
+                                                            "type": "string",
+                                                            "example": "date-created"
+                                                        },
+                                                        "uupdated_at": {
+                                                            "type": "string",
+                                                            "example": "date-updated"
+                                                        }
+                                                    },
                                                     "type": "object"
                                                 }
                                             },
@@ -190,9 +248,26 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "status code": {
+                                            "type": "integer",
+                                            "example": 404
+                                        },
+                                        "error": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "Estas credenciales no son válidas."
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "token": {
+                                                    "type": "string",
+                                                    "example": "your_api_token"
+                                                }
+                                            },
+                                            "type": "object"
                                         }
                                     },
                                     "type": "object"
@@ -218,6 +293,14 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "status code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "error": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "¡Cerró sesión exitosamente!"
@@ -236,7 +319,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "No autorizado para realizar la operación."
+                                            "example": "Unauthenticated."
                                         }
                                     },
                                     "type": "object"
@@ -282,18 +365,78 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "required": [
-                                        "nombres",
-                                        "apellidos"
-                                    ],
                                     "properties": {
-                                        "nombres": {
-                                            "type": "string",
-                                            "example": "Aderson Felix"
+                                        "status code": {
+                                            "type": "integer",
+                                            "example": 200
                                         },
-                                        "apellidos": {
+                                        "error": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
                                             "type": "string",
-                                            "example": "Jara Lazaro"
+                                            "example": "¡Lista de ejercicios!"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Sentadillas"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "Mantén la espalda recta y baja el cuerpo como si te fueras a sentar en una silla invisible."
+                                                    },
+                                                    "imagen_uri": {
+                                                        "type": "string",
+                                                        "example": "imagen.jpg"
+                                                    },
+                                                    "break": {
+                                                        "type": "boolean",
+                                                        "example": false
+                                                    },
+                                                    "muscle_group": {
+                                                        "type": "string",
+                                                        "example": "Piernas"
+                                                    },
+                                                    "deleted_at": {
+                                                        "type": "string",
+                                                        "example": null
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T00:09:16.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T12:33:45.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated."
                                         }
                                     },
                                     "type": "object"
@@ -303,6 +446,617 @@
                     },
                     "404": {
                         "description": "Error retrieving exercises"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Exercises"
+                ],
+                "summary": "Create a new exercise",
+                "description": "Creates a new exercise with the provided data",
+                "operationId": "a078c4ddd3ed986ed1db0a7fa8c6f37f",
+                "requestBody": {
+                    "description": "Exercise data to create",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "description",
+                                    "image_uri",
+                                    "break",
+                                    "muscle_group"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Sentadillas"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Mantén la espalda recta y baja el cuerpo como si te fueras a sentar en una silla invisible."
+                                    },
+                                    "image_uri": {
+                                        "type": "string",
+                                        "example": "imagen.jpg"
+                                    },
+                                    "break": {
+                                        "type": "boolean",
+                                        "example": false
+                                    },
+                                    "muscle_group": {
+                                        "type": "string",
+                                        "example": "Piernas"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Exercise created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status code": {
+                                            "type": "integer",
+                                            "example": 201
+                                        },
+                                        "error": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "¡Ejercicio creado exitosamente!"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": "1"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Sentadillas"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "Mantén la espalda recta y baja el cuerpo como si te fueras a sentar en una silla invisible."
+                                                },
+                                                "imagen_uri": {
+                                                    "type": "string",
+                                                    "example": "imagen.jpg"
+                                                },
+                                                "break": {
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "muscle_group": {
+                                                    "type": "string",
+                                                    "example": "Piernas"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2024-04-12T12:00:00.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2024-04-12T12:00:00.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error creating exercise",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "name": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/exercises/{id}": {
+            "get": {
+                "tags": [
+                    "Exercises"
+                ],
+                "summary": "Get a specific exercise",
+                "description": "Retrieves a specific exercise by its ID",
+                "operationId": "a27f6543c3a459b84e2303c71261c4fd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the exercise to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "error": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "¡Ejercicio obtenido exitosamente!"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": "1"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Sentadillas"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "Mantén la espalda recta y baja el cuerpo como si te fueras a sentar en una silla invisible."
+                                                },
+                                                "imagen_uri": {
+                                                    "type": "string",
+                                                    "example": "imagen.jpg"
+                                                },
+                                                "break": {
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "muscle_group": {
+                                                    "type": "string",
+                                                    "example": "Piernas"
+                                                },
+                                                "deleted_at": {
+                                                    "type": "string",
+                                                    "example": null
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-02-23T00:09:16.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-02-23T12:33:45.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Error retrieving the exercise",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status code": {
+                                            "type": "integer",
+                                            "example": 404
+                                        },
+                                        "error": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Error al actualizar el ejercicio."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Exercises"
+                ],
+                "summary": "Update an exercise",
+                "description": "Updates an exercise by its ID",
+                "operationId": "597cee0ad7c235d36ce51deda464fa71",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the exercise to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Exercise data to be updated",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "image_uri": {
+                                        "type": "string",
+                                        "example": "image.png"
+                                    },
+                                    "break": {
+                                        "type": "boolean"
+                                    },
+                                    "muscle_group": {
+                                        "type": "string",
+                                        "example": "Piernas"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "error": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "¡Ejercicio actualizado exitosamente!"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": "1"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Sentadillas"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "Mantén la espalda recta y baja el cuerpo como si te fueras a sentar en una silla invisible."
+                                                },
+                                                "imagen_uri": {
+                                                    "type": "string",
+                                                    "example": "imagen.jpg"
+                                                },
+                                                "break": {
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "muscle_group": {
+                                                    "type": "string",
+                                                    "example": "Piernas"
+                                                },
+                                                "deleted_at": {
+                                                    "type": "string",
+                                                    "example": null
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-02-23T00:09:16.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-02-23T12:33:45.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "name": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Error updating the exercise",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status code": {
+                                            "type": "integer",
+                                            "example": 404
+                                        },
+                                        "error": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Error al actualizar el ejercicio."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Exercises"
+                ],
+                "summary": "Delete an exercise",
+                "description": "Deletes an exercise by its ID",
+                "operationId": "7f3087129c9b202f7a7701e10dc3ad45",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the exercise to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "error": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "¡Ejercicio eliminado exitosamente!"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": "1"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Sentadillas"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "Mantén la espalda recta y baja el cuerpo como si te fueras a sentar en una silla invisible."
+                                                },
+                                                "imagen_uri": {
+                                                    "type": "string",
+                                                    "example": "imagen.jpg"
+                                                },
+                                                "break": {
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "muscle_group": {
+                                                    "type": "string",
+                                                    "example": "Piernas"
+                                                },
+                                                "deleted_at": {
+                                                    "type": "string",
+                                                    "example": null
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-02-23T00:09:16.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-02-23T12:33:45.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Error deleting the exercise",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status code": {
+                                            "type": "integer",
+                                            "example": 404
+                                        },
+                                        "error": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Error al eliminar el ejercicio."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [

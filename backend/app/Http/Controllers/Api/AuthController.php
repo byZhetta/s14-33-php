@@ -52,6 +52,8 @@ class AuthController extends Controller
      *         response=201,
      *         description="User created successfully",
      *         @OA\JsonContent(
+     *              @OA\Property(property="status code", type="int", example=201),
+     *              @OA\Property(property="error", type="bool", example=false),
      *             @OA\Property(property="message", type="string", example="¡Usuario creado exitosamente!"),
      *             @OA\Property(
      *                 property="data",
@@ -116,6 +118,8 @@ class AuthController extends Controller
      *         response=200,
      *         description="Login successful",
      *         @OA\JsonContent(
+     *             @OA\Property(property="status code", type="int", example=200),
+     *             @OA\Property(property="error", type="bool", example=false),
      *             @OA\Property(property="message", type="string", example="¡Inició sesión exitosamente!"),
      *             @OA\Property(
      *                 property="data",
@@ -124,7 +128,15 @@ class AuthController extends Controller
      *                 @OA\Property(
      *                     property="user",
      *                     type="object",
-     *                     @OA\Schema(ref="#/components/schemas/User")
+     *                      @OA\Property(property="id", type="int", example=1),
+     *                      @OA\Property(property="name", type="string", example="John Doe"),
+     *                      @OA\Property(property="email", type="string", format="email", example="user@example.com"),
+     *                      @OA\Property(property="username", type="string", example="johndoe"),
+     *                      @OA\Property(property="email_verified_at", type="string", example=null),
+     *                      @OA\Property(property="objective_id", type="int", example=1),
+     *                      @OA\Property(property="deleted_at", type="string", example=null),
+     *                      @OA\Property(property="created_at", type="string", example="date-created"),
+     *                      @OA\Property(property="uupdated_at", type="string", example="date-updated"),
      *                 )
      *             )
      *         )
@@ -133,7 +145,14 @@ class AuthController extends Controller
      *         response=404,
      *         description="Invalid credentials",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="Estas credenciales no son válidas.")
+     *             @OA\Property(property="status code", type="int", example=404),
+     *             @OA\Property(property="error", type="bool", example=true),
+     *             @OA\Property(property="message", type="string", example="Estas credenciales no son válidas."),
+     *             @OA\Property(
+     *                 property="data",
+     *                 type="object",
+     *                 @OA\Property(property="token", type="string", example="your_api_token")
+     *             )
      *         )
      *     )
      * )
@@ -162,6 +181,8 @@ class AuthController extends Controller
      *         response=200,
      *         description="Logout successful",
      *         @OA\JsonContent(
+     *             @OA\Property(property="status code", type="int", example=200),
+     *             @OA\Property(property="error", type="bool", example=false),
      *             @OA\Property(property="message", type="string", example="¡Cerró sesión exitosamente!")
      *         )
      *     ),
@@ -169,7 +190,7 @@ class AuthController extends Controller
      *         response=401, 
      *         description="Unauthorized",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="No autorizado para realizar la operación.")
+     *             @OA\Property(property="message", type="string", example="Unauthenticated.")
      *         )
      *     ),
      *     @OA\Response(
