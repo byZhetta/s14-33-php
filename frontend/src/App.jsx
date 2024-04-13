@@ -1,11 +1,13 @@
+import React from 'react'
+import EjerciciosEnCurso from './Pages/EjerciciosEnCurso/EjerciciosEnCurso';
 
 function App() {
 
 	return (
 		<>
-			<h1>App</h1>
+		  <EjerciciosEnCurso />
 		</>
 	)
 }
 
-export default App
+export default App;
