@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+
 import { AiFillHome } from "react-icons/ai";
 import { IoMdSettings } from "react-icons/io";
 import { GiBiceps } from "react-icons/gi";
@@ -13,25 +15,33 @@ const NavbarDesktop = () => {
 				<ul className=' flex flex-col pl-6 mt-28 space-y-5'>
 					<li className='flex items-center space-x-5'>
 						<div>
-							<AiFillHome className='text-4xl rounded-full p-1.5  hover:bg-[#16116F]' />
+							<Link to="/">
+								<AiFillHome className='text-4xl rounded-full p-1.5  hover:bg-[#16116F]' />
+							</Link>	
 						</div>
 						<p className=' text-sm'>INICIO</p>
 					</li>
 					<li className='flex items-center space-x-5'>
 						<div>
-							<GiBiceps className='text-4xl rounded-full p-1.5  hover:bg-[#16116F]' />
+							<Link to="/objetivos">
+								<GiBiceps className='text-4xl rounded-full p-1.5  hover:bg-[#16116F]' />
+							</Link>
 						</div>
 						<p className=' text-sm'>OBJETIVO</p>
 					</li>
 					<li className='flex items-center space-x-5'>
 						<div>
-							<GiStrong className='text-4xl rounded-full p-1.5  hover:bg-[#16116F]' />
+						 	<Link to="/perfil">
+								<GiStrong className='text-4xl rounded-full p-1.5  hover:bg-[#16116F]' />
+							</Link>
 						</div>
 						<p className=' text-sm'>PERFIL</p>
 					</li>
 					<li className='flex items-center space-x-5'>
 						<div>
-							<IoMdSettings className='text-4xl rounded-full p-1.5  hover:bg-[#16116F]' />
+							<Link to="/ajustes">
+								<IoMdSettings className='text-4xl rounded-full p-1.5  hover:bg-[#16116F]' />
+							</Link>
 						</div>
 						<p className=' text-sm'>AJUSTES</p>
 					</li>
