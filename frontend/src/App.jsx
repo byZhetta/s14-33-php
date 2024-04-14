@@ -1,11 +1,11 @@
 import React from 'react'
-import EjerciciosEnCurso from './Pages/EjerciciosEnCurso/EjerciciosEnCurso';
+import Navigation from './Routes/Navigation';
 
 function App() {
 
 	return (
 		<>
-		  <EjerciciosEnCurso />
+		 	<Navigation />
 		</>
 	)
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const ExerciseHistory = () => {
     return (
@@ -13,7 +14,7 @@ const ExerciseHistory = () => {
                             <p>Descripción:</p>
                             <p className=' text-xs lg:text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore accusamus fuga necessitatibus eligendi ea tempora id sint molestias soluta excepturi quo commodi, cum laboriosam praesentium sit magni esse, ex repellat!</p>
                             <div className="card-actions justify-end">
-                                <button className="py-2 px-6 rounded-full bg-gradient-to-r from-[#1100CF] to-[#9308E8]">IR</button>
+                                <Link to="/ejercicios-en-curso" className="py-2 px-6 rounded-full bg-gradient-to-r from-[#1100CF] to-[#9308E8]">IR</Link>
                             </div>
                         </div>
                     </div>

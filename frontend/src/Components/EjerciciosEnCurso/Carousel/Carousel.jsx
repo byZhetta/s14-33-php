@@ -7,7 +7,7 @@ import sugerencia4 from '../assets/Carousel/sugerencia4.png';
 
 const Carousel = () => {
   return (
-    <div className="flex flex-wrap justify-center sm:justify-start lg:justify-center xl:justify-between mt-6 ml-20 mr-20">
+    <div className="flex flex-wrap justify-center sm:justify-start lg:justify-center xl:justify-between mt-6 ml-24 mr-20">
       <Card imageSrc={sugerencia1} title="Sugerencia 1" />
       <Card imageSrc={sugerencia2} title="Sugerencia 2" />
       <Card imageSrc={sugerencia3} title="Sugerencia 3" />
