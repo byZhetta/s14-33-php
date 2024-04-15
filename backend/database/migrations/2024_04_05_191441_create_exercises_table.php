@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('description')->max(500)->nullable();
             $table->string('image_uri', 255)->nullable();
             $table->time('break')->nullable();
-            $table->enum('muscle_group', ['Pecho', 'Espalda', 'Brazos', 'Piernas', 'Abdomen', 'General']);
+            $table->enum('muscle_group', ['Pecho', 'Espalda', 'Brazos', 'Piernas', 'Abdomen', 'Gluteos', 'Integral']);
             $table->softDeletes();
             $table->timestamps();
         });
