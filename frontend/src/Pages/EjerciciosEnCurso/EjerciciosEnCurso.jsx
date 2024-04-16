@@ -17,7 +17,7 @@ const EjerciciosEnCurso = () => {
           <div className="mt-6 ml-4 sm:ml-0 sm:mr-auto"> 
             <h1 className="text-2xl text-white font-bold mt-9 ml-20">Ejercicio</h1>
           </div>
-          <img src={logo} alt="Logo" className="w-48 h-auto object-contain mr-20" />
+          <img src={logo} className="w-32 -mr-3 lg:w-48 xl:w-64" title="Entrena Conmigo" alt="Logo de Entrena Conmigo" />
         </div>
         <CardPrincipal />
         <CardDescripcion />
