@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Exercise;
 use App\Http\Requests\Api\ExerciseRequest;
+use App\Models\Preference;
+use App\Services\PreferenceService;
 use App\Traits\ApiResponse;
 use Exception;
 
@@ -60,6 +62,24 @@ class ExerciseControllers extends Controller
             return $this->success(200, '¡Ejercicio eliminado exitosamente!', $exercise);
         } catch (Exception $e) {
             return $this->error(404, 'Error al actualizar el ejercicio.');          
+        }
+    }
+
+    public function showbyuser(PreferenceService $preferenceService)
+    {
+        try {
+            $preferencias = Preference::
+            where('user_id', auth()->id())
+            ->first();
+
+            if ($preferencias) {
+                $data = $preferenceService->getPreferences();
+                return $this->success(200, '¡Ejercicios obtenidos exitosamente!', $data);
+            } else {
+                return $this->error(404, 'Debe ingresar sus preferencias musculares');
+            }
+        } catch (Exception $e) {
+            return $this->error(500, 'Error al mostrar ejercicios.');          
         }
     }
 }
