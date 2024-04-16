@@ -1,32 +1,32 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
 import Home from '../pages/Home/Home';
 import Objetivos from '../pages/Objetivos/Objetivos';
 import Perfil from '../pages/Perfil/Perfil';
 import EjerciciosEnCurso from '../pages/EjerciciosEnCurso/EjerciciosEnCurso';
 import Ajustes from '../pages/Ajustes/Ajustes';
+import PageLayout from '../layout/PageLayout/PageLayout';
 
 const routes = createBrowserRouter([
     {
         path: "/",
-        element: <Home />,
+        element: <PageLayout><Home /></PageLayout> ,
     },
     {
         path: "/objetivos",
-        element: <Objetivos />, 
+        element: <PageLayout><Objetivos /></PageLayout>, 
     },
     {
         path: "/perfil",
-        element: <Perfil />,
+        element: <PageLayout><Perfil /></PageLayout>,
     },
     {
         path: "/ejercicios-en-curso",
-        element: <EjerciciosEnCurso />, 
+        element: <PageLayout><EjerciciosEnCurso /></PageLayout>, 
     },
     {
         path: "/ajustes",
-        element: <Ajustes />, 
+        element: <PageLayout><Ajustes /></PageLayout>, 
     },
 ]);
 
