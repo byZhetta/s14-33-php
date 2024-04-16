@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\RoutineResource;
 use App\Models\Routine;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class RoutineController extends Controller
     public function index()
     {
         $routine = Routine::all();
-        return response()->json($routine,200);
+        //return response()->json($routine,200);
+        return RoutineResource::collection(Routine::all());
     }
 
 
