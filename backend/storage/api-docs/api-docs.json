@@ -10,7 +10,7 @@
             "url": "http://127.0.0.1:8000"
         },
         {
-            "url": "https:entrenaconmigo-api.vercel.app"
+            "url": "http://entrenaconmigo-api.vercel/api"
         }
     ],
     "paths": {
