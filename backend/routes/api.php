@@ -16,6 +16,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Rutas de exercises
     Route::get('exercises', [ExerciseControllers::class, 'index'])->name('exercise.index');
+    Route::get('exercises/preferences', [ExerciseControllers::class, 'showbyuser'])->name('exercise.preferences');
     Route::post('exercises', [ExerciseControllers::class, 'store'])->name('exercise.store');
     Route::get('exercises/{id}', [ExerciseControllers::class, 'show'])->name('exercise.show');
     Route::put('exercises/{exercise}', [ExerciseControllers::class, 'update'])->name('exercise.update');
