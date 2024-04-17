@@ -5,9 +5,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ExerciseControllers;
 use App\Http\Controllers\Api\ObjectiveController;
 use App\Http\Controllers\Api\ProfileController;
-use Illuminate\Http\Request;
-use Symfony\Component\Process\Process;
-use Symfony\Component\Process\Exception\ProcessFailedException;
+use Illuminate\Support\Facades\Artisan;
 
 Route::post('register', [AuthController::class, 'register'])->name('api.register');
 Route::post('login', [AuthController::class, 'login'])->name('api.login');
@@ -30,16 +28,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('objectives', [ObjectiveController::class, 'createOrupdate'])->name('objective.createorupdate');
 });
 
-Route::get('/run-composer-command', function (Request $request) {
-    // Ejecuta el comando de Composer que desees
-    $process = new Process(['composer', 'composer require "darkaonline/l5-swagger"']);
-    $process->run();
-
-    // Verifica si ocurrió algún error al ejecutar el comando
-    if (!$process->isSuccessful()) {
-        throw new ProcessFailedException($process);
-    }
-
-    // Retorna una respuesta
-    return 'Comando de Composer ejecutado correctamente';
+Route::get('storage-link', function(){
+    Artisan::call('storage:link');
 });
