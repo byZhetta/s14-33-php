@@ -25,6 +25,7 @@ class UpdateProfileRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email'],
             'username' => ['required'],
+            "photo_uri" => ['nullable', 'string'],
         ];
     }
 
@@ -39,6 +40,8 @@ class UpdateProfileRequest extends FormRequest
             'email.email'    => 'El email no es válido.',
 
             'username.required' => 'El nombre de usuario es obligatorio.',
+
+            'photo_uri.string'   => 'El valor de foto no es correcto.',
         ];
     }
 }
