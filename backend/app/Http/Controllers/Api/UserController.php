@@ -42,21 +42,7 @@ class UserController extends Controller
             
             if (Hash::check($request->password, $user->password)) {
                 
-                if($request->filled('name')){
-                    $user->name = $request->name;
-                }
-
-                if($request->filled('email')){
-                    $user->email = $request->email;
-                }
-
-                if($request->filled('username')){
-                    $user->username = $request->username;
-                }
-
-                if($request->filled('objective_id')){
-                    $user->objective_id = $request->objective_id;
-                }
+                $user->fill($request->only(['name', 'email', 'username', 'objective_id']));
 
                 if($request->filled('new_password')){
                     $user->password = bcrypt($request->new_password);
