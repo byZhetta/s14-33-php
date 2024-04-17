@@ -1,6 +1,4 @@
 import React from 'react'
-import logo from '../../pages/Home/assets/logo.png';
-import NavbarDesktop from '../../components/Navbar/NavbarDesktop';
 import CardPrincipal from '../../components/EjerciciosEnCurso/CardPrincipal/CardPrincipal';
 import CardDescripcion from '../../components/EjerciciosEnCurso/CardDescripcion/CardDescripcion';
 import ButtonCounterMinutes from '../../components/EjerciciosEnCurso/ContadorMinutos/ButtonCounterMinutes';
@@ -12,12 +10,10 @@ const EjerciciosEnCurso = () => {
   return (
     <section className="bg-[#131429] text-white">
       <div className="container mx-auto p-12">
-        <NavbarDesktop />
-        <div className=" flex justify-between items-center mt-3 ml-9 mr-1 ">
-          <div className="mt-6 ml-4 sm:ml-0 sm:mr-auto"> 
-            <h1 className="text-2xl text-white font-bold mt-9 ml-20">Ejercicio</h1>
+        <div className="flex justify-between items-center mt-3 ml-9 mr-1 ">
+          <div className="ml-4 sm:ml-0 sm:mr-auto"> 
+            <h1 className="text-2xl text-white font-bold ml-20">Ejercicio</h1>
           </div>
-          <img src={logo} className="w-32 -mr-3 lg:w-48 xl:w-64" title="Entrena Conmigo" alt="Logo de Entrena Conmigo" />
         </div>
         <CardPrincipal />
         <CardDescripcion />
