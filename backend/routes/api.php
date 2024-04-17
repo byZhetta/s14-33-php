@@ -23,7 +23,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('exercises/{exercise}', [ExerciseControllers::class, 'destroy'])->name('exercise.destroy');
     
     // Rutas de objectives
-    Route::post('objectives', [ObjectiveController::class, 'store'])->name('objective.store');
     Route::get('objectives', [ObjectiveController::class, 'show'])->name('objective.show');
-    Route::put('objectives', [ObjectiveController::class, 'update'])->name('objective.update');
+    Route::post('objectives', [ObjectiveController::class, 'createOrupdate'])->name('objective.createorupdate');
 });
