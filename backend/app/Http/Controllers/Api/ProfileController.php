@@ -35,14 +35,14 @@ class ProfileController extends Controller
         try {
             $user = Auth::user();
 
-            if (isset($request['photo_uri'])) {
+            if ($user->photo_uri) {
+                $absolutePath = public_path($user->photo_uri);
+                File::delete($absolutePath);
+            }
+            
+            if (isset($request['photo_uri']) && $request['photo_uri']) {
                 $relativePath = $this->saveImage($request['photo_uri']);
                 $request['photo_uri'] = $relativePath;
-
-                if ($user->photo_uri) {
-                    $absolutePath = public_path($user->photo_uri);
-                    File::delete($absolutePath);
-                }
             }
 
             DB::table('users')
