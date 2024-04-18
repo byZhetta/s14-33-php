@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Hash;
 use App\Traits\ApiResponse;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Exception;
 
@@ -24,7 +23,7 @@ class ProfileController extends Controller
             ->select('name', 'email', 'username', 'photo_uri')
             ->where('id', auth()->id())
             ->first(); 
-            $user->photo_uri = asset($user->photo_uri);
+            if($user->photo_uri) $user->photo_uri = asset($user->photo_uri);
             return $this->success(200, 'Perfil de usuario', $user);
         } catch (Exception $e) {
             return $this->error(404, 'Error al registrar el usuario.');
@@ -55,8 +54,9 @@ class ProfileController extends Controller
                 'photo_uri' => $request->photo_uri,
             ]);
             return $this->success(200, '¡Perfil actualizado exitosamente!');
-        } catch (Exception $e) {
-            return $this->error(404, 'Error al actualizar los datos.');
+        } catch (Exception $e) { 
+            return $this->error(404, $e->getMessage());
+            // return $this->error(404, 'Error al actualizar los datos.');
         }
     }
 
