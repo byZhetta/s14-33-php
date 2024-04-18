@@ -21,9 +21,10 @@ class ProfileController extends Controller
     {
         try {
             $user = DB::table('users')
-            ->select('name', 'email', 'username')
+            ->select('name', 'email', 'username', 'photo_uri')
             ->where('id', auth()->id())
-            ->get();
+            ->first(); 
+            $user->photo_uri = asset($user->photo_uri);
             return $this->success(200, 'Perfil de usuario', $user);
         } catch (Exception $e) {
             return $this->error(404, 'Error al registrar el usuario.');
@@ -34,6 +35,7 @@ class ProfileController extends Controller
     {
         try {
             $user = Auth::user();
+
             if (isset($request['photo_uri'])) {
                 $relativePath = $this->saveImage($request['photo_uri']);
                 $request['photo_uri'] = $relativePath;
@@ -89,12 +91,12 @@ class ProfileController extends Controller
                 throw new \Exception('Conversión de imagen base64 falló');
             }
 
-            $dir = 'images/';
             $file = Str::random() . '.' . $type;
-            $relativePath = $dir . $file;
-            Storage::disk('public')->put($relativePath, $image);
+
+            $path = 'images/' . $file;
+            file_put_contents($path, $image);
             
-            return 'storage/'.$relativePath;
+            return $path;
         }
         else{
             throw new \Exception('Uri no coincide con imagen en base 64');
