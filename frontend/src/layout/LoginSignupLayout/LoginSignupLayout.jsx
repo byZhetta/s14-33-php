@@ -8,8 +8,8 @@ const LoginSignupLayout = ({ children, page, path }) => {
     const backgroundImage = `url(${BackImage})`
 
     return (
-        <section className='bg-[#131429] bg-cover bg-center' style={{ backgroundImage }}>
-            <div className='flex items-center justify-between md:px-6 lg:justify-end'>
+        <section className='bg-[#131429] min-h-screen bg-cover bg-center' style={{ backgroundImage }}>
+            <div className='h-[10vh] flex items-center justify-between md:px-6 lg:justify-end'>
                 <Link to={path} className='ml-3 text-xs text-white lg:text-sm'>{page}</Link>
                 <img src={Logo} className='w-32 lg:w-48 xl:w-64' title='Entrena Conmigo' alt="Logo de Entrena Conmigo" />
             </div>

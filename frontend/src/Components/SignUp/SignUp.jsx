@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
@@ -9,11 +9,24 @@ import { HiOutlineLockClosed } from "react-icons/hi2";
 
 const SignUp = () => {
 
+    const navigate = useNavigate()
+
     const { handleSubmit, register, formState: { errors } } = useForm()
 
-    const onSubmit = (data) => {
-        console.log(data)
-        
+    const onSubmit = async (data) => {
+        if (data.password !== data.password_confirmation) {
+            alert('las contraseña no son iguales')
+        }
+        try {
+            await axios.get('/sanctum/csrf-cookie')
+            const result = await axios.post('https://entrenaconmigo-api.vercel.app/api/api/register', data,{ headers: { 'Accept': 'application/json' }})
+            const responde = result.data
+            console.log(responde)
+            navigate('/iniciar-sesion')
+
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -99,24 +112,25 @@ const SignUp = () => {
                         <span className='text-xs text-start w-full text-red-600 pb-3 xl:text-sm'>{errors.password && errors.password.message}</span>
                     </div>
                     <div className=' relative'>
-                        <label htmlFor="confim-password" className='label-form'>Confirmar contraseña</label>
+                        <label htmlFor="password_confirmation" className='label-form'>Confirmar contraseña</label>
                         <HiOutlineLockClosed className='input-icon-form' />
                         <input
                             className='input-form'
                             autoComplete='off'
                             type="password"
-                            name="confim-password"
-                            id="confim-password"
-                            {...register('confim-password', {
+                            name="password_confirmation"
+                            id="password_confirmation"
+                            {...register('password_confirmation', {
                                 required: 'Repite la contraseña',
                                 minLength: { value: 8, message: 'La contraseña debe tener entre 8 y 25 caracteres' },
                                 maxLength: { value: 25, message: 'La contraseña no debe superar los 25 caracteres' },
+                                validate: (value) => value === document.getElementById('password').value || 'Las contraseñas no coinciden'
                             })}
                         />
-                        <span className='text-xs text-start w-full text-red-600 pb-3 xl:text-sm'>{errors['confim-password'] && errors['confim-password'].message}</span>
+                        <span className='text-xs text-start w-full text-red-600 pb-3 xl:text-sm'>{errors['password_confirmation'] && errors['password_confirmation'].message}</span>
                     </div>
                 </div>
-                <button type="submit" className='w-full mt-3 py-1.5 text-sm rounded-full bg-gradient-to-r from-[#1100CF] to-[#9308E8]'>ENVIAR</button>
+                <button type="submit" className='w-full mt-3 py-2 text-sm rounded-full bg-gradient-to-r from-[#1100CF] to-[#9308E8]'>ENVIAR</button>
                 <SocialMediaForm label='O puedes registrarte con tu cuenta' />
             </form>
         </section>
