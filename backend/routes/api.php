@@ -5,7 +5,6 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ExerciseControllers;
 use App\Http\Controllers\Api\ObjectiveController;
 use App\Http\Controllers\Api\ProfileController;
-use Illuminate\Support\Facades\Artisan;
 
 Route::post('register', [AuthController::class, 'register'])->name('api.register');
 Route::post('login', [AuthController::class, 'login'])->name('api.login');
@@ -26,8 +25,4 @@ Route::middleware('auth:sanctum')->group(function () {
     // Rutas de objectives
     Route::get('objectives', [ObjectiveController::class, 'show'])->name('objective.show');
     Route::post('objectives', [ObjectiveController::class, 'createOrupdate'])->name('objective.createorupdate');
-});
-
-Route::get('storage-link', function(){
-    Artisan::call('storage:link');
 });
