@@ -2,7 +2,7 @@ import React from 'react'
 
 const CardItem = ({ day, duration, progressValue }) => {
     return (
-      <div className="w-[182px] h-[189px] mr-2 carousel rounded-box mt-2 border-2 with-gradient-border">
+      <div className="w-[182px] h-[189px] mr-2 carousel rounded-box mt-2 bg-[#232442] border border-[#9308E8]">
         <div className="flex flex-col items-center justify-center content-between h-full">  
           <h4 className="text-center text-white text-xl mr-8 mt-3 font-bold">{day}</h4>  
           <p className="text-center text-white mr-9 mt-6">{duration}</p>  
