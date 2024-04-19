@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Routine extends Model
 {
-    use HasFactory, SoftDeletes;
+   // use HasFactory, SoftDeletes;
+   use HasFactory;
 
     protected $fillable = ['user_id', 'progress'];
 

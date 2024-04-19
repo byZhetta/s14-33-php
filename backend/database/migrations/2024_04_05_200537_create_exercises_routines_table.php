@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\Exercise::class);
             $table->foreignIdFor(\App\Models\Routine::class);
-            $table->enum('day', ['0','1','2','3','4','5','6']);
+            //$table->enum('day', ['0','1','2','3','4','5','6']);
+            $table->integer('day');
             $table->integer('series');
             $table->integer('repetition');
             $table->integer('weight');
