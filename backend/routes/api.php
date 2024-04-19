@@ -7,7 +7,6 @@ use App\Http\Controllers\Api\ExerciseRoutineController;
 use App\Http\Controllers\Api\ObjectiveController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\RoutineController;
-use Illuminate\Http\Request;
 
 Route::post('register', [AuthController::class, 'register'])->name('api.register');
 Route::post('login', [AuthController::class, 'login'])->name('api.login');
@@ -29,15 +28,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('objectives', [ObjectiveController::class, 'show'])->name('objective.show');
     Route::post('objectives', [ObjectiveController::class, 'createOrupdate'])->name('objective.createorupdate');
   
-    //Route:group(['prefix'=>'v1'],function(){});
-    Route::resource('/routine', RoutineController::class );
-    Route::get('/routine/progress/{progress}', [RoutineController::class, 'progress'] )->name('routine.progress');
+    // Rutas de routines
+    Route::apiResource('routine', RoutineController::class)->names('routine');
+    Route::get('routine/progress/{progress}', [RoutineController::class, 'progress'])->name('routine.progress');
 
-    Route::resource('/relation',ExerciseRoutineController::class);
-    Route::get('/relation/complete/{id}', [ExerciseRoutineController::class, 'complete'] );
-
-    //Route::get('/relation/index', [RoutineController::class, 'indexRelation'] )->name('routine.indexrelation');
-    //Route::get('/relation/index/{id}', [RoutineController::class, 'showRelation'] )->name('routine.showrelation');
-    //Route::post('/relation/store', [RoutineController::class, 'storeRelation'] )->name('routine.storeRelation');
-    //Route::get('/relation/update{id}', [RoutineController::class, 'updateRelation'] )->name('routine.updateRelation');
+    Route::apiResource('relation', ExerciseRoutineController::class)->names('relation');
+    Route::get('relation/complete/{id}', [ExerciseRoutineController::class, 'complete'])->name('relation.complete');
 });
