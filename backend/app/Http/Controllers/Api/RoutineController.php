@@ -4,82 +4,81 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RoutineResource;
-use Illuminate\Support\Facades\DB;
 use App\Models\Routine;
+use App\Traits\ApiResponse;
 use Exception;
 use Illuminate\Http\Request;
 
 class RoutineController extends Controller
 {
-     /**
-     * Display a listing of the resource.
-     */
+    use ApiResponse;
     public function index()
     {
-        $routine = Routine::all();
-        //return response()->json($routine,200);
-        return RoutineResource::collection(Routine::all());
+        try {
+            // $routine = Routine::all();
+            return RoutineResource::collection(Routine::all());
+        } catch (Exception $e) {
+            return $this->error(500, 'Error al mostrar la rutina.');
+        }
     }
-
 
     public function store(Request $request)
     {
-        $routine = Routine::create($request->all());
-
-        return response()->json([
-            'success'=>true,
-            'data'=>$routine
-        ],201);
+        try {
+            $routine = Routine::create($request->all());
+            return $this->success(201, 'Rutina de ejercicios', $routine);
+        } catch (Exception $e) {
+            return $this->error(500, 'Error al crear la rutina.');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        $routine = Routine::find($id);
-        return response()->json($routine,200);
+        try {
+            $routine = Routine::find($id);
+            return $this->success(200, 'Rutina de ejercicios', $routine);
+        } catch (Exception $e) {
+            return $this->error(500, 'Error al mostrar la rutina.');
+        }
     }
-
 
     public function update(Request $request, string $id)
     {
-        $routine= Routine::find($id);
-        $routine->progress= $request->progress;
-        $routine->user_id=$request->user_id;
-        $routine->save();
-
-        return response()->json([
-            'success'=>true,
-            'data'=>$routine
-        ],200);
-
-
+        try {
+            $routine= Routine::find($id);
+            $routine->progress= $request->progress;
+            $routine->user_id=$request->user_id;
+            $routine->save();
+    
+            return $this->success(200, 'Rutina de ejercicios', $routine);
+        } catch (Exception $e) {
+            return $this->error(500, 'Error al actualizar la rutina.');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        Routine::find($id)->delete();
-        return response()->json(['success'=>true],200);
+        try {
+            Routine::find($id)->delete();
+            return $this->success(200, 'Rutina eliminada exitosamente');
+        } catch (Exception $e) {
+            return $this->error(500, 'Error al eliminar la rutina.');
+        }
     }
 
     public function progress(string $id){
-        $routine =Routine::find($id);
-        if($routine->progress){
-            $routine->progress=false;
-        }else{
-            $routine->progress=true;
+        try {
+            $routine =Routine::find($id);
+            if($routine->progress){
+                $routine->progress=false;
+            }else{
+                $routine->progress=true;
+            }
+            $routine->save();    
+
+            return $this->success(200, 'Rutina de ejercicios', $routine);
+        } catch (Exception $e) {
+            return $this->error(500, 'Error al mostrar el progreso de la rutina.');
         }
-
-        $routine->save();
-
-        return response()->json([
-            'success'=>true,
-            'data'=>$routine
-        ],200);
     }
-
 }
