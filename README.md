@@ -1,13 +1,15 @@
-# s14-33-php
+<div align=center >
+    <img src="./database/logo_entrenaconmigo.png" class="img-logo" alt="Entrena Conmigo" >
+</div>
 
-# [Nombre de la Web App]
+<h1 align="center">Entrena Conmigo</h1>
 
 ## Industria o Rubro:
 Deporte
 
 ## Descripción:
 <div align="justify">
-[Nombre de la Web App] es una web app que surge del deseo de incorporar el hábito del ejercico en casa. Y su principal objetivo es ayudar a personas principiantes a superarse día a día según sus objetivos. [Nombre de la web app] está pensado para todo tipo de usuarios pero principalmente para aquellos que no disponen de tiempo, son su primeros pasos o no saben como dar su primer paso en esta aventura de superación y hábitos para la salud física.
+Entrena Conmigo es una web app que surge del deseo de incorporar el hábito del ejercico en casa. Y su principal objetivo es ayudar a personas principiantes a superarse día a día según sus objetivos. Entrena Conmigo está pensado para todo tipo de usuarios pero principalmente para aquellos que no disponen de tiempo, son su primeros pasos o no saben como dar su primer paso en esta aventura de superación y hábitos para la salud física.
 </div>
 
 ### Objetivo:
@@ -34,7 +36,7 @@ Deporte
 | <img src="https://www.nicepng.com/png/full/128-1280406_user-icon-png.png" width=50>| <img src="https://www.nicepng.com/png/full/128-1280406_user-icon-png.png" width=50>| <img src="https://www.nicepng.com/png/full/128-1280406_user-icon-png.png" width=50>|
 |:-:|:-:|:-:|
 | **Facundo Nuñez**| **Emmanuel Robledo**| **Franco Nieva** |
-| <a href="https://github.com/facu1391"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/facundo-nu%C3%B1ez-380b9b234/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/emanuel4969"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="#"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/francojnieva"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="#"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+| <a href="https://github.com/facu1391"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/facundo-nu%C3%B1ez-380b9b234/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/emanuel4969"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/emanuel-ivan-robledo/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/francojnieva"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/francojnieva/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
 
 <hr/>
 
@@ -53,7 +55,7 @@ Deporte
 | <img src="https://www.nicepng.com/png/full/128-1280406_user-icon-png.png" width=50>| <img src="https://www.nicepng.com/png/full/128-1280406_user-icon-png.png" width=50>| <img src="https://www.nicepng.com/png/full/128-1280406_user-icon-png.png" width=50> | <img src="https://www.nicepng.com/png/full/128-1280406_user-icon-png.png" width=50>| <img src="https://www.nicepng.com/png/full/128-1280406_user-icon-png.png" width=50>|
 |:-:|:-:|:-:|:-:|:-:|
 | **Diana Gordillo** | **Juan Ortiz** | **Juan Sebastián Laverde** | **Ignacio Zolorza** | **Maite Mejia** |
-| <a href="https://github.com/dianagv7"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="#"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/JuanOrtizL"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="#"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/sbtn63"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="#"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/byZhetta"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="#"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/maite5"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="#"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+| <a href="https://github.com/dianagv7"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/diana-gordillo-v/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/JuanOrtizL"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/juan-manuel-ortiz-letrado/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/sbtn63"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/sebastian-laverde-51a33715b/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/byZhetta"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/ignacio-zdev/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/maite5"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/maite-guadalupe-mejia/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
 
 <hr/>
 
@@ -72,7 +74,7 @@ Deporte
 | <img src="https://www.nicepng.com/png/full/128-1280406_user-icon-png.png" width=50>|
 |:-:|
 | **Andrea Vilanova** |
-| <a href="https://github.com/AndreaVilanova"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="#"><img src="https://img.shields.io/badge/Behance-1769ff?style=for-the-badge&logo=behance&logoColor=white"/></a> <a href="#"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+| <a href="https://github.com/AndreaVilanova"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="#"><img src="https://img.shields.io/badge/Behance-1769ff?style=for-the-badge&logo=behance&logoColor=white"/></a> <a href="https://www.linkedin.com/in/andrea-vilanova-graphic-designer-12963228a/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
 
 <hr/>
 
