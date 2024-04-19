@@ -19,7 +19,7 @@ class RoutineResource extends JsonResource
             'progress'=>$this->progress,
             'user_id'=>$this->user_id,
             'user'=>$this->user,
-            'exercises'=>$this->exercises,
+            //'exercises'=>$this->exercises,
 
         ];
     }

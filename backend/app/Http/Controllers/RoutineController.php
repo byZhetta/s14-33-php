@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\RoutineResource;
+use Illuminate\Support\Facades\DB;
 use App\Models\Routine;
+use Exception;
 use Illuminate\Http\Request;
 
 class RoutineController extends Controller
@@ -22,6 +24,7 @@ class RoutineController extends Controller
     public function store(Request $request)
     {
         $routine = Routine::create($request->all());
+
         return response()->json([
             'success'=>true,
             'data'=>$routine
@@ -61,4 +64,21 @@ class RoutineController extends Controller
         Routine::find($id)->delete();
         return response()->json(['success'=>true],200);
     }
+
+    public function progress(string $id){
+        $routine =Routine::find($id);
+        if($routine->progress){
+            $routine->progress=false;
+        }else{
+            $routine->progress=true;
+        }
+
+        $routine->save();
+
+        return response()->json([
+            'success'=>true,
+            'data'=>$routine
+        ],200);
+    }
+
 }
