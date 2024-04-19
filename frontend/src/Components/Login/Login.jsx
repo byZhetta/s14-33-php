@@ -12,19 +12,29 @@ const Login = () => {
 
     const { handleSubmit, register, formState: { errors } } = useForm()
 
+    const [successMessage, setSuccessMessage ] = useState('')
+    const [errorMessage, setErrorMessage ] = useState('')
+
     const onSubmit = async (data) => {
         try {
             await axios.get('/sanctum/csrf-cookie')
             const result = await axios.post('https://entrenaconmigo-api.vercel.app/api/api/login', data,{ headers: { 'Accept': 'application/json' }})
-            const responde = result.data
-            console.log(responde)
-
+            const response = result.data
+            if (!response.error) {
+                setSuccessMessage(response.message)
+                localStorage.setItem('name', response.data.user.name)
+                setTimeout(() => {
+                    navigate('/')
+                }, 1500)
+            }
         } catch (error) {
-            console.log(error)
+            setErrorMessage('Datos incorrectos. Por favor, verifica tus credenciales')
+            setTimeout(() => {
+                setErrorMessage('')
+            }, 3000)
         }
     }
-
-
+    
     return (
         <section className=' px-3 pt-3 pb-6 flex justify-center items-center'>
             <form method='post' onSubmit={handleSubmit(onSubmit)} className='border-2  border-[#9308E8] px-5 py-4 bg-[#131429] rounded-md text-[#FAFAFA] md:w-[60%] md:px-12 lg:w-[45%] xl:px-16'>
@@ -69,7 +79,7 @@ const Login = () => {
                         <span className='text-xs text-start w-full text-red-600 pb-3 xl:text-sm'>{errors.password && errors.password.message}</span>
                     </div>
                 </div>
-                <div className=' flex items-center justify-between flex-wrap  my-5'>
+                <div className=' flex items-center justify-between flex-wrap my-5'>
                     <div className=' space-x-1'>
                         <input type="checkbox"  name="remember-user" id="remember-user" />
                         <label htmlFor="remember-user" className=' text-sm'>Recordar usuario</label>
@@ -78,6 +88,8 @@ const Login = () => {
                         <small>¿Olvidaste la contraseña?</small>
                     </div>
                 </div>
+                {successMessage && <p className='bg-green-600 p-1 rounded-md text-center'>{successMessage}</p>}
+                {errorMessage && <p className='bg-red-600 p-1 rounded-md text-center text-sm'>{errorMessage}</p>}
                 <button type="submit" className='w-full mt-3 py-2 text-sm rounded-full bg-gradient-to-r from-[#1100CF] to-[#9308E8]'>ENVIAR</button>
                 <SocialMediaForm label='Ingresa con tu cuenta de' />
             </form>
