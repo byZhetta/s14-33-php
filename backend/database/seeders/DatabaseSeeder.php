@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             ObjectiveSeeder::class,
             UserSeeder::class,
             ExerciseSeeder::class,
+            RoutineSeeder::class,
         ]);
     }
 }

@@ -25,5 +25,14 @@ class UserSeeder extends Seeder
                 'objective_id' => 1,
             ]
         );
+        User::updateOrCreate([
+            'email' => 'jm@correo.com',
+            'username' => 'jm@123.com',
+        ],
+        [
+            'name' => 'Juan Ortiz',
+            'password' => Hash::make('jm123'),
+            'objective_id' => 2,
+        ]);
     }
 }
