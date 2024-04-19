@@ -2,3 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .label-form {
+    @apply absolute -top-2 left-2 text-[.7rem] bg-[#131429] px-1 xl:text-[.8rem]
+  }
+
+  .input-form {
+    @apply bg-[#131429] w-full border border-[#D0BCFF] rounded-lg pl-7 pr-2 py-2 outline-none;
+  }
+
+  .input-icon-form {
+    @apply absolute top-3 left-2 text-gray-300 xl:top-4
+  }
+}

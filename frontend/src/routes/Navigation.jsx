@@ -6,8 +6,19 @@ import Perfil from '../pages/Perfil/Perfil';
 import EjerciciosEnCurso from '../pages/EjerciciosEnCurso/EjerciciosEnCurso';
 import Ajustes from '../pages/Ajustes/Ajustes';
 import PageLayout from '../layout/PageLayout/PageLayout';
+import LoginSignupLayout from '../layout/LoginSignupLayout/LoginSignupLayout';
+import Login from '../components/Login/Login';
+import SignUp from '../components/SignUp/SignUp';
 
 const routes = createBrowserRouter([
+    {
+        path: "/crear-cuenta",
+        element: <LoginSignupLayout path='/iniciar-sesion' page='INICIAR SESION'><SignUp /></LoginSignupLayout> ,
+    },
+    {
+        path: "/iniciar-sesion",
+        element: <LoginSignupLayout path='/crear-cuenta' page='REGISTRARSE'><Login /></LoginSignupLayout> ,
+    },
     {
         path: "/",
         element: <PageLayout><Home /></PageLayout> ,
