@@ -13,19 +13,37 @@ const SignUp = () => {
 
     const { handleSubmit, register, formState: { errors } } = useForm()
 
+    const [successMessage, setSuccessMessage] = useState('')
+    const [errorMessageServer, setErrorMessageServer] = useState('')
+    const [errorMessageEmail, setErrorMessageEmail] = useState('')
+    const [errorMessageUsername, setErrorMessageUsername] = useState('')
+
     const onSubmit = async (data) => {
-        if (data.password !== data.password_confirmation) {
-            alert('las contraseña no son iguales')
-        }
+        data.objective_id = "1"
         try {
             await axios.get('/sanctum/csrf-cookie')
-            const result = await axios.post('https://entrenaconmigo-api.vercel.app/api/api/register', data,{ headers: { 'Accept': 'application/json' }})
-            const responde = result.data
-            console.log(responde)
-            navigate('/iniciar-sesion')
-
+            const result = await axios.post('https://entrenaconmigo-api.vercel.app/api/api/register', data, { headers: { 'Accept': 'application/json' } })
+            const response = result.data
+            if (!response.error) {
+                setSuccessMessage(response.message)
+                localStorage.setItem('register-token', response.data.token)
+                setTimeout(() => {
+                    navigate('/iniciar-sesion')
+                }, 2500)
+            }
         } catch (error) {
-            console.log(error)
+            if (error.response.status === 422) {
+                const responseData = error.response.data
+                setErrorMessageEmail(responseData.errors.email[0])
+                setErrorMessageUsername(responseData.errors.username[0])
+                setTimeout(() => {
+                    setErrorMessageEmail('')
+                setErrorMessageUsername('')
+                }, 3000)
+            } else {
+                console.log(error)
+                setErrorMessageServer('Hubo un problema al registrarte. Por favor, intenta más tarde.')
+            }
         }
     }
 
@@ -129,6 +147,12 @@ const SignUp = () => {
                         />
                         <span className='text-xs text-start w-full text-red-600 pb-3 xl:text-sm'>{errors['password_confirmation'] && errors['password_confirmation'].message}</span>
                     </div>
+                </div>
+                {successMessage && <p className='bg-green-600 p-1 rounded-md text-center'>{successMessage}</p>}
+                <div className=' text-center space-y-2'>
+                    {errorMessageEmail && <p className='bg-red-600 p-1 rounded-md text-sm'>{errorMessageEmail}</p>}
+                    {errorMessageUsername && <p className='bg-red-600 p-1 rounded-md text-sm'>{errorMessageUsername}</p>}
+                    {errorMessageServer && <p className='bg-red-600 p-1 rounded-md text-sm'>{errorMessageServer}</p>}
                 </div>
                 <button type="submit" className='w-full mt-3 py-2 text-sm rounded-full bg-gradient-to-r from-[#1100CF] to-[#9308E8]'>ENVIAR</button>
                 <SocialMediaForm label='O puedes registrarte con tu cuenta' />
