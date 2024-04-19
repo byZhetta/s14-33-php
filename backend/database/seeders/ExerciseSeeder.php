@@ -23,7 +23,7 @@ class ExerciseSeeder extends Seeder
                     'name' => $value[0],
                     'description' => $value[1],
                     'image_uri' => $value[2],
-                    'break' => null,
+                    'break' => $value[3],
                     'muscle_group' => $value[4],
                 ]
             );
