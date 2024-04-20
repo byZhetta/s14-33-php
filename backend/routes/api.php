@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ExerciseRoutineController;
 use App\Http\Controllers\Api\ObjectiveController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\RoutineController;
+use App\Http\Controllers\Api\UserController;
 
 Route::post('register', [AuthController::class, 'register'])->name('api.register');
 Route::post('login', [AuthController::class, 'login'])->name('api.login');
@@ -15,6 +16,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('profile', [ProfileController::class, 'showProfile'])->name('profile.show');
     Route::put('profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
     Route::put('profile/update-password', [ProfileController::class, 'updatePassword'])->name('password.update');
+
+    //Rutas de users
+    Route::get('user/dashboard/', [UserController::class, 'show'])->name('user.show');
+    Route::put('user/dashboard/', [UserController::class, 'update'])->name('user.update');
+    Route::delete('user/dashboard/', [UserController::class, 'destroy'])->name('user.destroy');
 
     // Rutas de exercises
     Route::get('exercises', [ExerciseControllers::class, 'index'])->name('exercise.index');
