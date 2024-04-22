@@ -17,21 +17,26 @@ const SignUp = () => {
     const [errorMessageServer, setErrorMessageServer] = useState('')
     const [errorMessageEmail, setErrorMessageEmail] = useState('')
     const [errorMessageUsername, setErrorMessageUsername] = useState('')
+    const [sendMesagge, setSendMesagge] = useState('ENVIAR')
+    const [loading, setLoading] = useState(false)
 
     const onSubmit = async (data) => {
         data.objective_id = "1"
         try {
+            setSendMesagge('REGISTRANDO')
+            setLoading(true)
             await axios.get('/sanctum/csrf-cookie')
             const result = await axios.post('https://entrenaconmigo-api.vercel.app/api/api/register', data, { headers: { 'Accept': 'application/json' } })
             const response = result.data
             if (!response.error) {
                 setSuccessMessage(response.message)
-                localStorage.setItem('register-token', response.data.token)
                 setTimeout(() => {
                     navigate('/iniciar-sesion')
                 }, 2500)
             }
         } catch (error) {
+            setSendMesagge('ENVIAR')
+            setLoading(false)
             if (error.response.status === 422) {
                 const responseData = error.response.data
                 setErrorMessageEmail(responseData.errors.email[0])
@@ -48,7 +53,7 @@ const SignUp = () => {
     }
 
     return (
-        <section className='px-3 pt-3 pb-6 flex justify-center'>
+        <section className='relative px-3 pt-3 pb-6 flex justify-center'>
             <form method='post' onSubmit={handleSubmit(onSubmit)} className='border-2 border-[#9308E8] px-5 py-4 bg-[#131429] rounded-md text-[#FAFAFA] md:w-[60%] md:px-12 lg:w-[45%] xl:px-16'>
                 <h1 className='text-[1.5rem] text-center font-medium mb-3 xl:text-[1.7rem]'>Registro</h1>
                 <p className=' text-center text-sm mb-3'>Puedes crear tu usuario o si ya tienes una cuenta puedes <Link to='/iniciar-sesion' className='text-[#CE1CFF]'>INGRESAR AQUÍ</Link></p>
@@ -154,7 +159,10 @@ const SignUp = () => {
                     {errorMessageUsername && <p className='bg-red-600 p-1 rounded-md text-sm'>{errorMessageUsername}</p>}
                     {errorMessageServer && <p className='bg-red-600 p-1 rounded-md text-sm'>{errorMessageServer}</p>}
                 </div>
-                <button type="submit" className='w-full mt-3 py-2 text-sm rounded-full bg-gradient-to-r from-[#1100CF] to-[#9308E8]'>ENVIAR</button>
+                <button type="submit" className='w-full flex justify-center items-center mt-3 py-2 text-sm rounded-full bg-gradient-to-r from-[#1100CF] to-[#9308E8]'>
+                {sendMesagge}
+                { loading && <span className="loading loading-spinner loading-md ml-3"></span>}
+                </button>
                 <SocialMediaForm label='O puedes registrarte con tu cuenta' />
             </form>
         </section>
