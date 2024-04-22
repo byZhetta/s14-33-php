@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Exception;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -41,22 +42,25 @@ class ProfileController extends Controller
             }
             
             if (isset($request['photo_uri']) && $request['photo_uri']) {
-                $relativePath = $this->saveImage($request['photo_uri']);
-                $request['photo_uri'] = $relativePath;
-            }
+                // $relativePath = $this->saveImage($request['photo_uri']);
+                // $request['photo_uri'] = $relativePath;
 
+                $image = $request->file('photo_uri')->store('public/profile');
+                $url = Storage::url($image);
+            }
+            
             DB::table('users')
             ->where('id', $user->id)
             ->update([
                 'name' => $request->name,
                 'email' => $request->email,
                 'username' => $request->username,
-                'photo_uri' => $request->photo_uri,
+                // 'photo_uri' => $request->photo_uri,
+                'photo_uri' => $url,
             ]);
             return $this->success(200, '¡Perfil actualizado exitosamente!');
         } catch (Exception $e) { 
-            return $this->error(404, $e->getMessage());
-            // return $this->error(404, 'Error al actualizar los datos.');
+            return $this->error(404, 'Error al actualizar los datos.');
         }
     }
 
