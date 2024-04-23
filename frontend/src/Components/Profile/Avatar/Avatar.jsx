@@ -1,56 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Avatar = () => {
-  const [profileData, setProfileData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [userName, setUserName] = useState('');
 
   useEffect(() => {
-    const fetchProfileData = async () => {
+    const fetchUserData = async () => {
       try {
-        const token = localStorage.getItem('token');
-
-        if (!token) {
-          throw new Error('No se encontró el token en el almacenamiento local.');
-        }
-
+        const token = localStorage.getItem('token'); 
         const response = await axios.get('https://entrenaconmigo-api.vercel.app/api/api/profile', {
           headers: {
-            'Authorization': `Bearer ${token}`
+            Authorization: `Bearer ${token}` 
           }
         });
-
-        setProfileData(response.data);
+        const { data } = response.data;
+        setUserName(data.name); 
       } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
+        console.error('Error fetching user data:', error);
       }
     };
 
-    fetchProfileData();
-  }, []);
-
-  if (loading) {
-    return <p>Cargando...</p>;
-  }
-
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
+    fetchUserData();
+  }, []); 
 
   return (
     <section className="ml-[250px]">
       <div className="avatar">
-        {profileData && (
-          <div className="w-32 -mr-3 lg:w-48 xl:w-64 rounded-xl">
-            <img src={profileData.avatarUrl} alt="Avatar" />
-          </div>
-        )}
-        {profileData && (
-          <p className="text-left ml-9 mt-24 font-medium text-xl text-white dark:text-black">{profileData.name}</p>
-        )}
+        <div className="w-32 -mr-3 lg:w-48 xl:w-64 rounded-xl">
+          <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" alt={userName} />
+        </div>
+        <p className="text-left ml-9 mt-24 font-medium text-xl text-white dark:text-black">{userName}</p>
       </div>
     </section>
   );
