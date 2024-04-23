@@ -8,16 +8,14 @@ import Carousel from '../../components/EjerciciosEnCurso/Carousel/Carousel'
 
 const EjerciciosEnCurso = () => {
   return (
-    <section className="bg-[#131429] text-white">
-      <div className="container mx-auto p-12">
-        <div className="flex justify-between items-center mt-3 ml-9 mr-1 ">
-          <div className="ml-4 sm:ml-0 sm:mr-auto"> 
-            <h1 className="text-2xl text-white font-bold ml-20">Ejercicio</h1>
-          </div>
+    <section className="bg-color1 dark:bg-color2 text-white">
+      <div className="container mx-auto p-6 sm:p-12">
+        <div className="flex justify-center sm:justify-between items-center mt-3">
+          <h1 className="text-2xl font-bold ml-11">Ejercicio</h1>
         </div>
         <CardPrincipal />
         <CardDescripcion />
-        <div className="flex flex-col sm:flex-row mt-12"> 
+        <div className="flex flex-col sm:flex-row mt-6 sm:mt-12"> 
           <div className="sm:mr-4 mb-4 sm:mb-0"> 
             <ButtonCounterMinutes />
           </div>
@@ -26,14 +24,13 @@ const EjerciciosEnCurso = () => {
           </div>
         </div>
         <div>
-          <h2 className="text-xl font-bold mt-3 text-center text-white">Fatiga muscular</h2>
+          <h2 className="text-xl font-bold mt-6 text-center">Fatiga muscular</h2>
           <CardFatigaMuscular />
         </div>
-        <h2 className="text-xl font-bold mt-6 text-center text-white">Ejercios sugeridos</h2>
+        <h2 className="text-xl font-bold mt-6 text-center">Ejercios sugeridos</h2>
         <Carousel />
       </div>
     </section>
-    
   )
 }
 

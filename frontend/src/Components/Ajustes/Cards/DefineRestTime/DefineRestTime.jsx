@@ -10,10 +10,10 @@ const DefineRestTime = () => {
 
   return (
     <section className="flex justify-end mr-36">
-      <div className="card card-compact w-[505px] h-[163px] bg-[#232442] border border-[#9308E8] xl:w-[30%] shadow-xl relative">
+      <div className="card card-compact w-[505px] h-[163px] bg-color3 dark:bg-color4 border border-[#9308E8] xl:w-[30%] shadow-xl relative">
         <div className="card-body">
-          <h2 className="card-title">DEFINIR TIEMPO DESCANSO</h2>
-          <p>Tiempo en segundos entre cada repetición</p>
+          <h2 className="card-title text-white dark:text-black">DEFINIR TIEMPO DESCANSO</h2>
+          <p className="text-white dark:text-black">Tiempo en segundos entre cada repetición</p>
           <label className="absolute top-2 right-2">
             <input 
               type="checkbox" 

@@ -3,8 +3,8 @@ import Card from '../Card/Card';
 
 const RendimientoCard = () => {
     return (
-        <Card title="Rendimiento semanal" className="bg-base-200 transform transition-transform hover:scale-110">
-            <p className="text-white">
+        <Card title="Rendimiento semanal" className="bg-color3 dark:bg-color4 transform transition-transform hover:scale-110">
+            <p className="text-white dark:text-black">
                 Se recomienda mayor constancia para lograr los objetivos. Sigue adelante! Tu puedes!
             </p>
             <div className="card">

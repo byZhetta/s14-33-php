@@ -1,46 +1,43 @@
-import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import axios from 'axios'
-import { Link, useNavigate } from 'react-router-dom'
-import SocialMediaForm from '../SocialMediaForm/SocialMediaForm'
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import SocialMediaForm from '../SocialMediaForm/SocialMediaForm';
 import { AiOutlineMail } from "react-icons/ai";
 import { HiOutlineLockClosed } from "react-icons/hi2";
 
 const Login = () => {
-
-    const navigate = useNavigate()
-
-    const { handleSubmit, register, formState: { errors } } = useForm()
-
-    const [successMessage, setSuccessMessage] = useState('')
-    const [errorMessage, setErrorMessage] = useState('')
-    const [sendMesagge, setSendMesagge] = useState('ENVIAR')
-    const [loading, setLoading] = useState(false)
+    const navigate = useNavigate();
+    const { handleSubmit, register, formState: { errors } } = useForm();
+    const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [sendMesagge, setSendMesagge] = useState('ENVIAR');
+    const [loading, setLoading] = useState(false);
 
     const onSubmit = async (data) => {
         try {
-            setSendMesagge('INICIANDO SESIÓN')
-            setLoading(true)
-            await axios.get('/sanctum/csrf-cookie')
-            const result = await axios.post('https://entrenaconmigo-api.vercel.app/api/api/login', data, { headers: { 'Accept': 'application/json' } })
-            const response = result.data
+            setSendMesagge('INICIANDO SESIÓN');
+            setLoading(true);
+            await axios.get('/sanctum/csrf-cookie');
+            const result = await axios.post('https://entrenaconmigo-api.vercel.app/api/api/login', data, { headers: { 'Accept': 'application/json' } });
+            const response = result.data;
             if (!response.error) {
-                setSuccessMessage(response.message)
-                localStorage.setItem('name', response.data.user.name)
-                localStorage.setItem('token', response.data.token)
+                setSuccessMessage(response.message);
+                localStorage.setItem('name', response.data.user.name);
+                localStorage.setItem('token', response.data.token);
                 setTimeout(() => {
-                    navigate('/panel')
-                }, 1500)
+                    navigate('/panel');
+                }, 1500);
             }
         } catch (error) {
-            setSendMesagge('ENVIAR')
-            setLoading(false)
-            setErrorMessage('Datos incorrectos. Por favor, verifica tus credenciales')
+            setSendMesagge('ENVIAR');
+            setLoading(false);
+            setErrorMessage('Datos incorrectos. Por favor, verifica tus credenciales');
             setTimeout(() => {
-                setErrorMessage('')
-            }, 3000)
+                setErrorMessage('');
+            }, 3000);
         }
-    }
+    };
 
     return (
         <section className='relative px-3 pt-3 pb-6 flex justify-center items-center'>
@@ -98,13 +95,13 @@ const Login = () => {
                 {successMessage && <p className='bg-green-600 p-1 rounded-md text-center'>{successMessage}</p>}
                 {errorMessage && <p className='bg-red-600 p-1 rounded-md text-center text-sm'>{errorMessage}</p>}
                 <button type="submit" className='w-full flex justify-center items-center mt-3 py-2 text-sm rounded-full bg-gradient-to-r from-[#1100CF] to-[#9308E8]'>
-                {sendMesagge}
-                {loading && <span className="loading loading-spinner loading-md ml-3"></span>}
+                    {sendMesagge}
+                    {loading && <span className="loading loading-spinner loading-md ml-3"></span>}
                 </button>
                 <SocialMediaForm label='Ingresa con tu cuenta de' />
             </form>
         </section>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;
