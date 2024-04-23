@@ -4,19 +4,19 @@ import completado2 from '../CardCompletado/assets/completado2.png';
 
 const CardCompletado = () => {
   return (
-    <section className="flex justify-center pt-10">
-        <div className="card mb-5 w-[288px] h-[268] bg-base-200 shadow-xl mr-6 transform transition-transform hover:scale-110 ">
-            <figure><img src={completado1} alt="Shoes" /></figure>
-            <div className="card-body">
-            <h2 className="card-title text-white">Completado</h2>
-            </div>
+    <section className="flex px-3 flex-col justify-around items-center flex-wrap pt-4 space-y-3 md:flex-row md:justify-start md:space-x-2 md:space-y-0">
+      <div className="card bg-[#232442] w-[12rem] shadow-xl">
+        <figure><img src={completado1} alt="Shoes" /></figure>
+        <div className="p-2">
+          <h2 className="card-title text-white text-sm p-2">Completado</h2>
         </div>
-        <div className="card mb-5 w-[288px] h-[268] bg-base-200 shadow-xl transform transition-transform hover:scale-110">
-            <figure><img src={completado2} alt="Shoes" /></figure>
-            <div className="card-body">
-                <h2 className="card-title text-white">Completado</h2>
-            </div>
+      </div>
+      <div className="card bg-[#232442] w-[12rem] shadow-xl">
+        <figure><img src={completado2} alt="Shoes" /></figure>
+        <div className="p-2">
+          <h2 className="card-title text-white text-sm p-2">Completado</h2>
         </div>
+      </div>
     </section>
   )
 }

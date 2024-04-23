@@ -37,11 +37,11 @@ const Avatar = () => {
   }
 
   if (error) {
-    return <p>Error: {error}</p>;
+    return <p className=' text-center text-white'>Error: {error}</p>;
   }
 
   return (
-    <section className="ml-[250px]">
+    <section className="">
       <div className="avatar">
         {profileData && (
           <div className="w-32 -mr-3 lg:w-48 xl:w-64 rounded-xl">
