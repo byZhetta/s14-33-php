@@ -3,12 +3,14 @@ import axios from 'axios';
 
 const Avatar = () => {
   const [profileData, setProfileData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
         const token = localStorage.getItem('token');
-        
+
         if (!token) {
           throw new Error('No se encontró el token en el almacenamiento local.');
         }
@@ -21,12 +23,22 @@ const Avatar = () => {
 
         setProfileData(response.data);
       } catch (error) {
-        console.error('Error:', error.message);
+        setError(error.message);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchProfileData();
   }, []);
+
+  if (loading) {
+    return <p>Cargando...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
   return (
     <section className="ml-[250px]">

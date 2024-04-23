@@ -6,7 +6,7 @@ import ButtonSave from '../../components/Objetivos/Buttons/buttonSave.jsx';
 
 const Objetivos = () => {
   return (
-    <section className="bg-[#131429] min-h-screen flex flex-col justify-start items-center text-white pt-9 px-3 lg:pl-28">
+    <section className="bg-color1 dark:bg-color2 min-h-screen flex flex-col justify-start items-center text-white pt-9 px-3 lg:pl-28">
       <Card />
       <Buttons />
       <Buttons2 />
