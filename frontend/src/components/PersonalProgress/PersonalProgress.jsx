@@ -5,10 +5,10 @@ const PersonalProgress = () => {
         <section className='pb-20 space-y-4'>
             <h2 className='text-xs lg:text-sm xl:text-base'>RESUMEN PROGRESO PERSONAL</h2>
             <section className=' flex flex-col gap-3 md:flex-row'>
-                <div className="card w-full bg-[#232442] border border-[#9308E8] xl:w-[30%]">
+                <div className="card w-full bg-color3 dark:bg-color4 border border-[#9308E8] xl:w-[30%]">
                     <div className="card-body p-3">
-                        <h2 className="card-title text-[1rem]">Repeticiones: 10/18</h2>
-                        <small>55% Completado</small>
+                        <h2 className="card-title text-[1rem] text-white dark:text-black ">Repeticiones: 10/18</h2>
+                        <small className="text-white dark:text-black">55% Completado</small>
                         <progress className="progress progress-secondary w-full bg-white" value="55" max="100"></progress>
                         <div className="card-actions justify-end mt-2">
                             <button className="text-sm py-2 px-6 rounded-full bg-gradient-to-r from-[#1100CF] to-[#9308E8]">Consultar</button>
