@@ -9,19 +9,19 @@ const SendNotifications = () => {
   };
 
   return (
-    <section className="flex justify-end mr-36">
-      <div className="card card-compact w-[505px] h-[139] bg-color3 dark:bg-color4 border border-[#9308E8] xl:w-[30%] shadow-xl relative">
-        <div className="card-body">
-          <h2 className="card-title text-white dark:text-black ">ENVIAR NOTIFICACIONES</h2>
-          <p className="text-white dark:text-black">Permitir las notificaciones de actualización</p>
-          <label className="absolute top-2 right-2">
+    <section className="">
+      <div className="card card-compact bg-color3 text-white dark:bg-color4 border border-[#9308E8] shadow-xl lg:w-[20rem]">
+        <div className="p-3">
+          <div className=' flex items-center justify-between'>
+            <h2 className="card-title dark:text-black text-sm  xl:text-base">ENVIAR NOTIFICACIONES</h2>
             <input 
-              type="checkbox" 
-              className="toggle" 
-              checked={isChecked} 
-              onChange={handleCheckboxChange} 
-            />
-          </label>
+            type="checkbox" 
+            className="toggle" 
+            checked={isChecked} 
+            onChange={handleCheckboxChange} 
+          />
+          </div>
+          <p className="dark:text-black pb-2 text-sm xl:text-base">Permitir las notificaciones de actualización</p>
           {isChecked && <Alert type="info" message="Esta sección todavía no está disponible" />}
         </div>
       </div>

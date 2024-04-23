@@ -7,7 +7,7 @@ import CardCompletado from '../../components/Profile/Cards/CardCompletado/CardCo
 
 const Perfil = () => {
   return (
-    <section className="bg-color1 dark:bg-color2">
+    <section className="bg-color1 dark:bg-color2 pb-20 px-3 md:px-7 lg:pl-28">
       <Avatar />
       <CardProgreso />
       <CardRendimiento />

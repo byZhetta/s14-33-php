@@ -12,13 +12,11 @@ const DarkMode = ({ darkMode, setDarkMode }) => {
   };
 
   return (
-    <section className="mt-5 ml-36">
-      <div className="card flex w-[505PX] h-[83px] bg-color3 dark:bg-color4 border border-[#9308E8] xl:w-[30%] shadow-xl relative">
-        <div className="card-body">
-          <h2 className="card-title ml-[50px] text-white dark:text-black ">{darkMode ? 'MODO OSCURO' : 'MODO CLARO'}</h2>
-          <label className="absolute top-2 right-2">
-            <input type="checkbox" className="toggle" checked={darkMode} onChange={toggleDarkMode} />
-          </label>
+    <section className="">
+      <div className="card bg-color3 dark:bg-color4 border border-[#9308E8] shadow-xl lg:w-[20rem]">
+        <div className="flex items-center justify-between p-3">
+          <h2 className="card-title text-white dark:text-black text-sm xl:text-base">{darkMode ? 'MODO OSCURO' : 'MODO CLARO'}</h2>
+          <input type="checkbox" className="toggle" checked={darkMode} onChange={toggleDarkMode} />
         </div>
       </div>
     </section>
