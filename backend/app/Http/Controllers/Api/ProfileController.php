@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Exception;
 use Illuminate\Support\Facades\Storage;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class ProfileController extends Controller
 {
@@ -24,7 +25,7 @@ class ProfileController extends Controller
             ->select('name', 'email', 'username', 'photo_uri')
             ->where('id', auth()->id())
             ->first(); 
-            if($user->photo_uri) $user->photo_uri = asset($user->photo_uri);
+            // if($user->photo_uri) $user->photo_uri = asset($user->photo_uri);
             return $this->success(200, 'Perfil de usuario', $user);
         } catch (Exception $e) {
             return $this->error(404, 'Error al registrar el usuario.');
@@ -35,20 +36,26 @@ class ProfileController extends Controller
     {
         try {
             $user = Auth::user();
-
+            $url = $user->photo_uri;
+            $public_id = $user->public_id;
+            
             if ($user->photo_uri) {
-                $absolutePath = public_path($user->photo_uri);
-                File::delete($absolutePath);
+                // $absolutePath = public_path($user->photo_uri);
+                // File::delete($absolutePath);
+                Cloudinary::destroy($public_id);
             }
             
             if (isset($request['photo_uri']) && $request['photo_uri']) {
                 // $relativePath = $this->saveImage($request['photo_uri']);
                 // $request['photo_uri'] = $relativePath;
-
-                $image = $request->file('photo_uri')->store('public/profile');
-                $url = Storage::url($image);
+                // $image = $request->file('photo_uri')->store('public/profile');
+                // $url = Storage::url($image);
+                $file = request()->file('photo_uri');
+                $obj = Cloudinary::upload($file->getRealPath(),['folder'=>'entrenaconmigo/profile']);
+                $url = $obj->getSecurePath();
+                $public_id = $obj->getPublicId();
             }
-            
+
             DB::table('users')
             ->where('id', $user->id)
             ->update([
@@ -57,6 +64,7 @@ class ProfileController extends Controller
                 'username' => $request->username,
                 // 'photo_uri' => $request->photo_uri,
                 'photo_uri' => $url,
+                'public_id' => $public_id,
             ]);
             return $this->success(200, '¡Perfil actualizado exitosamente!');
         } catch (Exception $e) { 
