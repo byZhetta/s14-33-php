@@ -26,7 +26,7 @@ const NavbarMobile = () => {
                     </Link>
                 </li>
                 <li className='rounded-full p-1.5 hover:bg-[#16116F]'>
-                    <Link to="/">
+                    <Link to="/panel">
                         <AiFillHome />
                     </Link>
                 </li>

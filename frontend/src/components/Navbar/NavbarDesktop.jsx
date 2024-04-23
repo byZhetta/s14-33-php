@@ -15,7 +15,7 @@ const NavbarDesktop = () => {
 				<ul className=' flex flex-col pl-6 mt-28 space-y-5'>
 					<li className='flex items-center space-x-5'>
 						<div>
-							<Link to="/">
+							<Link to="/panel">
 								<AiFillHome className='text-4xl rounded-full p-1.5  hover:bg-[#16116F]' />
 							</Link>	
 						</div>

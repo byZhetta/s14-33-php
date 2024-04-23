@@ -9,8 +9,13 @@ import PageLayout from '../layout/PageLayout/PageLayout';
 import LoginSignupLayout from '../layout/LoginSignupLayout/LoginSignupLayout';
 import Login from '../components/Login/Login';
 import SignUp from '../components/SignUp/SignUp';
+import Onboarding from '../pages/Onboarding/Onboarding';
 
 const routes = createBrowserRouter([
+    {
+        path: "/",
+        element: <Onboarding />
+    },
     {
         path: "/crear-cuenta",
         element: <LoginSignupLayout path='/iniciar-sesion' page='INICIAR SESION'><SignUp /></LoginSignupLayout> ,
@@ -20,7 +25,7 @@ const routes = createBrowserRouter([
         element: <LoginSignupLayout path='/crear-cuenta' page='REGISTRARSE'><Login /></LoginSignupLayout> ,
     },
     {
-        path: "/",
+        path: "/panel",
         element: <PageLayout><Home /></PageLayout> ,
     },
     {
