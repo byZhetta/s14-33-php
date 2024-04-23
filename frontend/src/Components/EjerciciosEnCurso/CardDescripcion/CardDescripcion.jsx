@@ -1,12 +1,40 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 
 function CardDescripcion() {
+  const [exerciseData, setExerciseData] = useState(null);
+
+  useEffect(() => {
+    const fetchExerciseData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+
+        const response = await fetch('https://entrenaconmigo-api.vercel.app/api/api/exercises/1', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        
+        const jsonData = await response.json();
+        setExerciseData(jsonData.data);
+      } catch (error) {
+        console.error('Error fetching exercise data:', error);
+      }
+    };
+
+    fetchExerciseData();
+  }, []);
+
   return (
     <div className="card w-full md:w-96 bg-color3 dark:bg-color4 text-primary-content mx-auto md:ml-24 transform transition-transform hover:scale-110">
       <div className="card-body">
-        <h2 className="card-title text-white dark:text-black">Nombre del ejercicio</h2>
-        <p className="text-white dark:text-black">Descripción:</p>
-        <p className="text-white dark:text-black">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam exercitationem enim minus repellat odit </p>
+        {exerciseData ? (
+          <>
+            <h2 className="card-title text-white dark:text-black">{exerciseData.name}</h2>
+            <p className="text-white dark:text-black">Descripción: {exerciseData.description}</p>
+          </>
+        ) : (
+          <p className="text-white dark:text-black">Cargando datos del ejercicio...</p>
+        )}
       </div>
     </div>
   );
