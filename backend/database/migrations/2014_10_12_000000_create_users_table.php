@@ -15,9 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('username')->unique();
+            $table->string('photo_uri', 255)->nullable();
+            $table->string('public_id', 255)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->foreignIdFor(\App\Models\Objective::class);
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
